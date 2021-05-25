@@ -1,5 +1,7 @@
 const express = require("express");
 const fs = require("fs");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // Reading JSON files
 
@@ -22,11 +24,15 @@ fs.readFile("./collection.json", (err, data) => {
   collection = rawData.collection;
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.get("/collections", (req, res) => {
   res.status(200).send(tree);
 });
 
