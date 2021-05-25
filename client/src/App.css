@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+}
+.navigation-tree {
+    background-color: aqua;
+    min-width: 320px;
+    height: 100vh;
+}
+
+.preview-space {
+    background-color: brown;
+    width: 100%;
+    height: 100vh;
+}
