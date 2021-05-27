@@ -1,5 +1,5 @@
 import "./App.css";
-import MainComponent from './components/main-component';
+import MainComponent from './components/MainComponent';
 import ServiceContextProvider from "./services/ServiceContext";
 
 function App() {
