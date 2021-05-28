@@ -8,8 +8,33 @@
     height: 100vh;
     border-right: solid 2px gray;
 }
-
 .preview-space {
     width: 100%;
     height: 100vh;
+}
+.image {
+    max-width: 300px;
+    height: auto;
+    margin: 20px auto;
+}
+.imageContainer {
+    height: 40vh;
+    border-bottom: 2px solid gray;
+    text-align: center;
+}
+.itemInfoContainer {
+    margin: 30px;
+    color: gray;
+}
+.editBtn {
+    background-color: #2196f3;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 50px;
+    text-align: center;
+    border: none;
+    float: right;
+}
+h2 {
+    display: inline;
 }

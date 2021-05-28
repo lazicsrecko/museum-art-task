@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { ServiceContext } from "../services/ServiceContext";
 import Tree from './Tree';
 import SearchBar from './SearchBar';
+import ItemPreview from './ItemPreview';
 
 function MainComponent() {
   const [collectionTree, setCollectionTree] = useState({ collection: [] });
+  const [itemId, setItemId] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [textFilter, setTextFilter] = useState('');
   const service = useContext(ServiceContext);
@@ -16,15 +18,20 @@ function MainComponent() {
     setTextFilter(event.target.value);
   }
 
-  const fetchCollection = async () => {
-    const localStorageCollection = JSON.parse(localStorage.getItem("collection"));
+  const getItemId = (id) => {
+    console.log(id);
+    setItemId(id);
+  }
 
-    if (localStorageCollection) {
-      setCollectionTree(localStorageCollection);
+  const fetchCollection = async () => {
+    const localStorageTree = JSON.parse(localStorage.getItem("tree"));
+
+    if (localStorageTree) {
+      setCollectionTree(localStorageTree);
     } else {
-      const collectionRequest = await service.mainService.getCollection();
-      localStorage.setItem('collection', JSON.stringify(collectionRequest));
-      setCollectionTree(collectionRequest);
+      const treeRequest = await service.mainService.getCollection();
+      localStorage.setItem('tree', JSON.stringify(treeRequest));
+      setCollectionTree(treeRequest);
     }
   };
 
@@ -44,9 +51,11 @@ function MainComponent() {
     <div className="container">
       <div className="navigation-tree">
         <SearchBar typeFilter={typeFilter} handleTypeChange={handleTypeChange} handleTextChange={handleTextChange} />
-        <Tree collectionTree={{ ...collectionTree, collection: filterTree()}} />
+        <Tree collectionTree={{ ...collectionTree, collection: filterTree()}} getItemId={getItemId} />
       </div>
-      <div className="preview-space">Product Details</div>
+      <div className="preview-space">
+        <ItemPreview itemId={itemId} />
+      </div>
     </div>
   );
 }
