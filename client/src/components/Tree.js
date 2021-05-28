@@ -9,7 +9,7 @@ import {
 } from '@material-ui/icons';
 
 function Tree(props) {
-    const { collectionTree } = props;
+    const { collectionTree, getItemId } = props;
 
     return (
             <TreeView
@@ -22,7 +22,7 @@ function Tree(props) {
                             <TreeItem nodeId={collection.id} label={collection.name}>
                                 {collection.collection.map(item => {
                                     return (
-                                        <TreeItem nodeId={item.id} label={item.name} />
+                                        <TreeItem nodeId={item.id} label={item.name} onClick={() => getItemId(item.id)} />
                                     )
                                 })}
                             </TreeItem>

@@ -8,13 +8,13 @@ function ItemPreview(props) {
 
 
     const fetchItem = async () => {
-        const itemRequest = await service.mainService.getItemById('101');
+        const itemRequest = await service.mainService.getItemById(itemId);
         setItem(itemRequest[0]);
     }
 
     useEffect(() => {
         fetchItem();
-    }, [])
+    }, [itemId])
 
     if (!item.id) {
         return (
