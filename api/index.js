@@ -33,7 +33,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/collections", (req, res) => {
-  res.status(200).send(tree);
+  res.status(200).send({
+    tree,
+    collection
+  });
 });
 
 app.get("/collection/:id", (req, res) => {

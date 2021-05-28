@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    height: 100vh;
 }
 .navigation-tree {
     padding: 10px;
@@ -26,15 +27,29 @@
     margin: 30px;
     color: gray;
 }
-.editBtn {
+.btn {
     background-color: #2196f3;
     color: white;
     border-radius: 5px;
     padding: 10px 50px;
     text-align: center;
     border: none;
+}
+.editBtn {
     float: right;
 }
 h2 {
     display: inline;
+}
+.editItemInfo {
+    width: 50%;
+    padding: 20px;
+    border-right: 2px solid gray;
+}
+.editItemPreview {
+    width: 50%;
+}
+.MuiFormControl-root.textFields {
+    width: 100%;
+    margin-bottom: 20px;
 }
